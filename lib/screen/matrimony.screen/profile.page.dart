@@ -148,7 +148,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    CupertinoPageRoute(builder: (context) => HomePage()),
+                    CupertinoPageRoute(builder: (context) => UploadPhotoPage()),
                   );
                 },
                 child: Container(
@@ -170,6 +170,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
+              SizedBox(height: 10.h),
             ],
           ),
         ),

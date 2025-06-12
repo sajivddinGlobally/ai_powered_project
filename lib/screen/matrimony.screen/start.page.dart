@@ -1,4 +1,4 @@
-import 'package:ai_powered_app/screen/matrimony.screen/lock.home.page.dart';
+import 'package:ai_powered_app/screen/matrimony.screen/home.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -83,7 +83,7 @@ class _StartPageState extends State<StartPage> {
                       Navigator.push(
                         context,
                         CupertinoPageRoute(
-                          builder: (context) => LockHomePage(),
+                          builder: (context) => HomePage(),
                         ),
                       );
                     },
