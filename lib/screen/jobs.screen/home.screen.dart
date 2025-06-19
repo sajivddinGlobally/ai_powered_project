@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:ai_powered_app/screen/jobs.screen/job.details.screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +15,35 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int tab = 0;
+  int bottomTab = 0;
+
+  List<Map<String, dynamic>> joblist = [
+    {
+      "imageUrl": "assets/full.png",
+      "position": "Full Stack Developer",
+      "remote": "Remote",
+      "part": "Full Time",
+      "salary": "₹15000-₹25000",
+      "location": "Mansarovar,jaipur",
+    },
+    {
+      "imageUrl": "assets/ui.png",
+      "position": "UI/UX Designer",
+      "remote": "Hybrid",
+      "part": "Part Time",
+      "salary": "₹8000-₹12000",
+      "location": "Banjara Hills, Hyderabad",
+    },
+    {
+      "imageUrl": "assets/full.png",
+      "position": "Data Analyst",
+      "remote": "Remote",
+      "part": "One-site",
+      "salary": "₹15000-₹25000",
+      "location": "Mansarovar,jaipur",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -232,173 +265,200 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: 3,
+              itemCount: joblist.length,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                        left: 24.w,
-                        right: 24.w,
-                        bottom: 20.h,
-                      ),
-                      // width: 392.w,
-                      // height: 192.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        color: Colors.white,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          left: 20.w,
-                          right: 20.w,
-                          top: 20.h,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => JobDetailsScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          left: 24.w,
+                          right: 24.w,
                           bottom: 20.h,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  width: 44.w,
-                                  height: 44.h,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.grey,
-                                  ),
-                                  child: ClipOval(
-                                    child: Image.asset("assets/full.png"),
-                                  ),
-                                ),
-                                SizedBox(width: 10.w),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Full Stack Developer",
-                                      style: GoogleFonts.alexandria(
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xFF1E1E1E),
-                                        letterSpacing: -1,
-                                      ),
-                                    ),
-                                    Text(
-                                      "JPLoft Pvt. Ltd",
-                                      style: GoogleFonts.alexandria(
-                                        fontSize: 11.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xFF9A97AE),
-                                        letterSpacing: -0.2,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 15.h),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.location_on_outlined,
-                                  size: 20.sp,
-                                  color: Color(0xFF9A97AE),
-                                ),
-                                SizedBox(width: 6.w),
-                                Text(
-                                  "Mansarovar, Jaipur",
-                                  style: GoogleFonts.alexandria(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFF9A97AE),
-                                    letterSpacing: -0.2,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10.h),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.attach_money,
-                                  size: 20.sp,
-                                  color: Color(0xFF9A97AE),
-                                ),
-                                SizedBox(width: 6.w),
-                                Text(
-                                  "₹15000-₹25000",
-                                  style: GoogleFonts.alexandria(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFF9A97AE),
-                                    letterSpacing: -0.2,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 25.h),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 69.w,
-                                  height: 28.h,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFE6EDF2),
-                                    borderRadius: BorderRadius.circular(40.r),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Remote",
-                                      style: GoogleFonts.alexandria(
-                                        fontSize: 11.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xFF1E1E1E),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 10.h),
-                                Container(
-                                  width: 69.w,
-                                  height: 28.h,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFE6EDF2),
-                                    borderRadius: BorderRadius.circular(40.r),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Full Time",
-                                      style: GoogleFonts.alexandria(
-                                        fontSize: 11.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xFF1E1E1E),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Spacer(),
-                                Container(
-                                  width: 69.w,
-                                  height: 28.h,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFF0A66C2),
-                                    borderRadius: BorderRadius.circular(40.r),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Apply",
-                                      style: GoogleFonts.alexandria(
-                                        fontSize: 11.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xFFFFFFFF),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                        // width: 392.w,
+                        // height: 192.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.r),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0, 10),
+                              blurRadius: 40,
+                              spreadRadius: 0,
+                              color: Color.fromARGB(12, 10, 102, 194),
                             ),
                           ],
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            left: 20.w,
+                            right: 20.w,
+                            top: 20.h,
+                            bottom: 20.h,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 44.w,
+                                    height: 44.h,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.grey,
+                                    ),
+                                    child: ClipOval(
+                                      child: Image.asset(
+                                        //"assets/full.png",
+                                        joblist[index]["imageUrl"].toString(),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10.w),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        //"Full Stack Developer",
+                                        joblist[index]["position"].toString(),
+                                        style: GoogleFonts.alexandria(
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xFF1E1E1E),
+                                          letterSpacing: -1,
+                                        ),
+                                      ),
+                                      Text(
+                                        "JPLoft Pvt. Ltd",
+                                        style: GoogleFonts.alexandria(
+                                          fontSize: 11.sp,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xFF9A97AE),
+                                          letterSpacing: -0.2,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 15.h),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.location_on_outlined,
+                                    size: 20.sp,
+                                    color: Color(0xFF9A97AE),
+                                  ),
+                                  SizedBox(width: 6.w),
+                                  Text(
+                                    //"Mansarovar, Jaipur",
+                                    joblist[index]["location"].toString(),
+                                    style: GoogleFonts.alexandria(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF9A97AE),
+                                      letterSpacing: -0.2,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10.h),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.attach_money,
+                                    size: 20.sp,
+                                    color: Color(0xFF9A97AE),
+                                  ),
+                                  SizedBox(width: 6.w),
+                                  Text(
+                                    //"₹15000-₹25000",
+                                    joblist[index]['salary'].toString(),
+                                    style: GoogleFonts.alexandria(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF9A97AE),
+                                      letterSpacing: -0.2,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 25.h),
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 69.w,
+                                    height: 28.h,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFE6EDF2),
+                                      borderRadius: BorderRadius.circular(40.r),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        //"Remote",
+                                        joblist[index]['remote'].toString(),
+                                        style: GoogleFonts.alexandria(
+                                          fontSize: 11.sp,
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xFF1E1E1E),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10.h),
+                                  Container(
+                                    width: 73.w,
+                                    height: 28.h,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFE6EDF2),
+                                      borderRadius: BorderRadius.circular(40.r),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        //"Full Time",
+                                        joblist[index]['part'].toString(),
+                                        style: GoogleFonts.alexandria(
+                                          fontSize: 11.sp,
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xFF1E1E1E),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Container(
+                                    width: 80.w,
+                                    height: 32.h,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFF0A66C2),
+                                      borderRadius: BorderRadius.circular(40.r),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "Apply",
+                                        style: GoogleFonts.alexandria(
+                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xFFFFFFFF),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -407,6 +467,59 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.r),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color(0xFF0A66C2),
+              borderRadius: BorderRadius.circular(20.r),
+            ),
+            child: BottomNavigationBar(
+              backgroundColor:
+                  Colors.transparent, // Make nav bar background transparent
+              elevation: 0, // Optional: remove shadow
+              currentIndex: bottomTab,
+              onTap: (value) {
+                setState(() {
+                  bottomTab = value;
+                });
+              },
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.white60,
+              showUnselectedLabels: true,
+              showSelectedLabels: true,
+              selectedLabelStyle: GoogleFonts.alexandria(
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w500,
+                letterSpacing: -0.2,
+              ),
+              unselectedLabelStyle: GoogleFonts.alexandria(
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w400,
+                letterSpacing: -0.2,
+              ),
+              items: [
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.explore_outlined),
+                  label: 'Browse',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.work_outline),
+                  label: 'My Job',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person_outlined),
+                  label: 'Profile',
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
