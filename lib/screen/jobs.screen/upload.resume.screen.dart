@@ -145,6 +145,7 @@ class _UploadResumeScreenState extends State<UploadResumeScreen> {
                 ),
               ),
             ),
+            SizedBox(height: 15.h),
             GestureDetector(
               onTap: () {
                 // Navigator.push(
