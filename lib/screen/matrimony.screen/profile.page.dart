@@ -115,7 +115,6 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(height: 15.h),
               buildDropDown(
                 hint: "Select Religion",
-
                 items: religionList,
                 onChange: (value) {
                   setState(() {
@@ -208,7 +207,7 @@ class buildDropDown extends StatelessWidget {
           borderSide: BorderSide(color: Color(0xFFDADADA), width: 1.5.w),
         ),
         hintText: hint,
-        hintStyle: GoogleFonts.gothicA1(
+        hintStyle: GoogleFonts.alexandria(
           fontSize: 16.sp,
           fontWeight: FontWeight.w400,
           color: Color(0xFF030016),
