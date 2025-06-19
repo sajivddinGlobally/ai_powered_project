@@ -1,3 +1,5 @@
+import 'package:ai_powered_app/screen/matrimony.screen/favourite.page.dart';
+import 'package:ai_powered_app/screen/matrimony.screen/message.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -137,42 +139,60 @@ class _ParticulaHomePageState extends State<ParticulaHomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 160.w,
-              height: 74.h,
-              decoration: BoxDecoration(
-                color: Color(0xFFFE9F0F),
-                borderRadius: BorderRadius.circular(20.r),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, -6),
-                    blurRadius: 40,
-                    spreadRadius: 0,
-                    color: Color.fromARGB(63, 0, 0, 0),
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Icon(Icons.favorite_border, color: Colors.white),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(builder: (context) => FavouritePage()),
+                );
+              },
+              child: Container(
+                width: 160.w,
+                height: 74.h,
+                decoration: BoxDecoration(
+                  color: Color(0xFFFE9F0F),
+                  borderRadius: BorderRadius.circular(20.r),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, -6),
+                      blurRadius: 40,
+                      spreadRadius: 0,
+                      color: Color.fromARGB(63, 0, 0, 0),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Icon(Icons.favorite_border, color: Colors.white),
+                ),
               ),
             ),
             SizedBox(width: 20.w),
-            Container(
-              width: 160.w,
-              height: 74.h,
-              decoration: BoxDecoration(
-                color: Color(0xFFF2D4DC),
-                borderRadius: BorderRadius.circular(20.r),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, -6),
-                    blurRadius: 40,
-                    spreadRadius: 0,
-                    color: Color.fromARGB(63, 0, 0, 0),
-                  ),
-                ],
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(builder: (context) => MessagePage()),
+                );
+              },
+              child: Container(
+                width: 160.w,
+                height: 74.h,
+                decoration: BoxDecoration(
+                  color: Color(0xFFF2D4DC),
+                  borderRadius: BorderRadius.circular(20.r),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, -6),
+                      blurRadius: 40,
+                      spreadRadius: 0,
+                      color: Color.fromARGB(63, 0, 0, 0),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Icon(Icons.chat, color: Color(0xFFFE9F0F)),
+                ),
               ),
-              child: Center(child: Icon(Icons.chat, color: Color(0xFFFE9F0F))),
             ),
           ],
         ),

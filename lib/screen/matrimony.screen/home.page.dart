@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:ai_powered_app/screen/matrimony.screen/favourite.page.dart';
 import 'package:ai_powered_app/screen/matrimony.screen/message.page.dart';
 import 'package:ai_powered_app/screen/matrimony.screen/particular.home.page.dart';
@@ -22,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     {"imageUrl": "assets/female2.png"},
   ];
   int tabBottom = 0;
-  bool isLocked = false;
+  bool isLocked = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,3 +1,4 @@
+import 'package:ai_powered_app/screen/jobs.screen/home.screen.dart';
 import 'package:ai_powered_app/screen/matrimony.screen/home.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -82,9 +83,7 @@ class _StartPageState extends State<StartPage> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(
-                          builder: (context) => HomePage(),
-                        ),
+                        CupertinoPageRoute(builder: (context) => HomePage()),
                       );
                     },
                     child: FindBody(
@@ -93,9 +92,17 @@ class _StartPageState extends State<StartPage> {
                     ),
                   ),
                   SizedBox(height: 15.h),
-                  FindBody(
-                    title: "JOBS",
-                    subtitle: "DISCOVER CAREER OPPORTUNITIES",
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(builder: (context) => HomeScreen()),
+                      );
+                    },
+                    child: FindBody(
+                      title: "JOBS",
+                      subtitle: "DISCOVER CAREER OPPORTUNITIES",
+                    ),
                   ),
                   SizedBox(height: 15.h),
                   FindBody(
