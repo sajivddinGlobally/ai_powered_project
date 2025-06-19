@@ -1,4 +1,4 @@
-import 'package:ai_powered_app/screen/jobs.screen/upload.resume.screen.dart';
+import 'package:ai_powered_app/screen/jobs.screen/basic.info.screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -230,7 +230,7 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
         onTap: () {
           Navigator.push(
             context,
-            CupertinoPageRoute(builder: (context) => UploadResumeScreen()),
+            CupertinoPageRoute(builder: (context) => BasicInfoScreen()),
           );
         },
         child: Container(

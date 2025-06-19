@@ -1,4 +1,5 @@
-import 'package:ai_powered_app/screen/jobs.screen/upload.resume.screen.dart';
+import 'package:ai_powered_app/screen/jobs.screen/skills.screen.dart';
+import 'package:ai_powered_app/screen/jobs.screen/basic.info.screen.dart';
 import 'package:ai_powered_app/screen/matrimony.screen/profile.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -92,7 +93,7 @@ class _EducationScreenState extends State<EducationScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    CupertinoPageRoute(builder: (context) => EducationScreen()),
+                    CupertinoPageRoute(builder: (context) => SkillsScreen()),
                   );
                 },
                 child: Container(
