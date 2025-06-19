@@ -498,7 +498,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontWeight: FontWeight.w500,
                 letterSpacing: -0.2,
               ),
-              unselectedLabelStyle: GoogleFonts.alexandria(
+              unselectedLabelStyle: GoogleFonts.gothicA1(
                 fontSize: 15.sp,
                 fontWeight: FontWeight.w400,
                 letterSpacing: -0.2,

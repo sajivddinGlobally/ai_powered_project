@@ -39,6 +39,7 @@ dependencies:
   otp_pin_field: ^1.4.1
   image_picker: ^1.1.2
   permission_handler: ^12.0.0+1
+  file_picker: ^10.2.0
 
 dev_dependencies:
   flutter_test:

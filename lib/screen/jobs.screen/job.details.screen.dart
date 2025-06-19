@@ -1,3 +1,5 @@
+import 'package:ai_powered_app/screen/jobs.screen/upload.resume.screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -224,21 +226,29 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
           ),
         ),
       ),
-      bottomSheet: Container(
-        margin: EdgeInsets.only(bottom: 20.h),
-        width: 339.w,
-        height: 74.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.r),
-          color: Color(0xFF0A66C2),
-        ),
-        child: Center(
-          child: Text(
-            "Apply Now",
-            style: GoogleFonts.alexandria(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
+      bottomSheet: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            CupertinoPageRoute(builder: (context) => UploadResumeScreen()),
+          );
+        },
+        child: Container(
+          margin: EdgeInsets.only(bottom: 20.h),
+          width: 339.w,
+          height: 74.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.r),
+            color: Color(0xFF0A66C2),
+          ),
+          child: Center(
+            child: Text(
+              "Apply Now",
+              style: GoogleFonts.alexandria(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
