@@ -33,7 +33,7 @@ class _BasicInfoScreenState extends State<BasicInfoScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Apply Now",
+                "Basic Information",
                 style: GoogleFonts.alexandria(
                   fontSize: 30.sp,
                   fontWeight: FontWeight.w500,
@@ -66,33 +66,7 @@ class _BasicInfoScreenState extends State<BasicInfoScreen> {
                 controller: locationController,
                 hint: "Enter your Current Location",
               ),
-              SizedBox(height: 15.h),
-              TextField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 20.w, right: 20.w),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.r),
-                    borderSide: BorderSide(
-                      color: Color(0xFFDADADA),
-                      width: 1.5.w,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.r),
-                    borderSide: BorderSide(
-                      color: Color(0xFFDADADA),
-                      width: 1.5.w,
-                    ),
-                  ),
-                  hintText: "LinkedIn URL",
-                  hintStyle: GoogleFonts.gothicA1(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFF9A97AE),
-                    letterSpacing: -0.2,
-                  ),
-                ),
-              ),
+
               SizedBox(height: 15.h),
               DropdownButtonFormField<String>(
                 //value: gender,
