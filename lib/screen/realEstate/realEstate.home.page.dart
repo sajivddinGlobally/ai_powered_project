@@ -43,6 +43,7 @@ class _RealestateHomePageState extends State<RealestateHomePage> {
       "km": "₹3000/m",
     },
   ];
+  int tabBottom = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -497,6 +498,59 @@ class _RealestateHomePageState extends State<RealestateHomePage> {
               },
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.r),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color(0xFF00796B),
+              borderRadius: BorderRadius.circular(20.r),
+            ),
+            child: BottomNavigationBar(
+              backgroundColor:
+                  Colors.transparent, // Make nav bar background transparent
+              elevation: 0, // Optional: remove shadow
+              currentIndex: tabBottom,
+              onTap: (value) {
+                setState(() {
+                  tabBottom = value;
+                });
+              },
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.white60,
+              showUnselectedLabels: true,
+              showSelectedLabels: true,
+              selectedLabelStyle: GoogleFonts.alexandria(
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w500,
+                letterSpacing: -0.2,
+              ),
+              unselectedLabelStyle: GoogleFonts.gothicA1(
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w400,
+                letterSpacing: -0.2,
+              ),
+              items: [
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.explore_outlined),
+                  label: 'Browse',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.history_rounded),
+                  label: 'History',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person_outlined),
+                  label: 'Profile',
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
