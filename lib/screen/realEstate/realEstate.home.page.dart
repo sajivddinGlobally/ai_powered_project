@@ -253,7 +253,8 @@ class _RealestateHomePageState extends State<RealestateHomePage> {
                             ClipRRect(
                               borderRadius: BorderRadiusGeometry.circular(20.r),
                               child: Image.asset(
-                                "assets/image.png",
+                                //"assets/image.png",
+                                imagePath,
                                 width: 330.w,
                                 height: 240.h,
                                 fit: BoxFit.cover,
@@ -290,69 +291,77 @@ class _RealestateHomePageState extends State<RealestateHomePage> {
                                 ),
                               ),
                             ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                margin: EdgeInsets.only(bottom: 13.h),
-                                width: 304.w,
-                                height: 65.h,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(13.r),
-                                  color: Colors.white,
+                            Positioned(
+                              bottom: 13.h,
+                              left: 0,
+                              right: 0,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  left: 13.w,
+                                  right: 13.w,
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                    left: 20.w,
-                                    right: 20.w,
+                                child: Container(
+                                  width: 304.w,
+                                  height: 65.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(13.r),
+                                    color: Colors.white,
                                   ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Maharashtra Hilltop Retreat",
-                                            style: GoogleFonts.inter(
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xFF1E1E1E),
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                      left: 20.w,
+                                      right: 20.w,
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Maharashtra Hilltop Retreat",
+                                              style: GoogleFonts.inter(
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Color(0xFF1E1E1E),
+                                              ),
                                             ),
-                                          ),
-                                          Text(
-                                            "₹1500",
-                                            style: GoogleFonts.inter(
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w400,
-                                              color: Color(0xFF1E1E1E),
+                                            Text(
+                                              "₹1500",
+                                              style: GoogleFonts.inter(
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xFF1E1E1E),
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "2 Bedroom  |  1480m2",
-                                            style: GoogleFonts.inter(
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xFF9A97AE),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "2 Bedroom  |  1480m2",
+                                              style: GoogleFonts.inter(
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Color(0xFF9A97AE),
+                                              ),
                                             ),
-                                          ),
-                                          Text(
-                                            "/month",
-                                            style: GoogleFonts.inter(
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w400,
-                                              color: Color(0xFF9A97AE),
+                                            Text(
+                                              "/month",
+                                              style: GoogleFonts.inter(
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xFF9A97AE),
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
