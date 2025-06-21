@@ -1,5 +1,6 @@
 import 'package:ai_powered_app/screen/jobs.screen/home.screen.dart';
 import 'package:ai_powered_app/screen/matrimony.screen/home.page.dart';
+import 'package:ai_powered_app/screen/realEstate/realEstate.home.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -105,9 +106,19 @@ class _StartPageState extends State<StartPage> {
                     ),
                   ),
                   SizedBox(height: 15.h),
-                  FindBody(
-                    title: "REAL ESTATE",
-                    subtitle: "BUT, RENT OR SELL PROPERTY",
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => RealestateHomePage(),
+                        ),
+                      );
+                    },
+                    child: FindBody(
+                      title: "REAL ESTATE",
+                      subtitle: "BUT, RENT OR SELL PROPERTY",
+                    ),
                   ),
                 ],
               ),
