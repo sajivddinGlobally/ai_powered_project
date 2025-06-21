@@ -1,3 +1,4 @@
+import 'package:ai_powered_app/screen/realEstate/property.Info.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -239,20 +240,28 @@ class _ParticularRealestatePageState extends State<ParticularRealestatePage> {
       ),
       bottomSheet: Padding(
         padding: EdgeInsetsGeometry.only(bottom: 10.h),
-        child: Container(
-          width: 339.w,
-          height: 74.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.r),
-            color: Color(0xFF00796B),
-          ),
-          child: Center(
-            child: Text(
-              "Book Now",
-              style: GoogleFonts.inter(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w400,
-                color: Colors.white,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              CupertinoPageRoute(builder: (context) => PropertyInfoPage()),
+            );
+          },
+          child: Container(
+            width: 339.w,
+            height: 74.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.r),
+              color: Color(0xFF00796B),
+            ),
+            child: Center(
+              child: Text(
+                "Book Now",
+                style: GoogleFonts.inter(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
