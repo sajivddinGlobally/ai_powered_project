@@ -1,4 +1,6 @@
+import 'package:ai_powered_app/screen/realEstate/particular.realEstate.page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -274,16 +276,28 @@ class _RealestateHomePageState extends State<RealestateHomePage> {
                           ),
                           child: Stack(
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadiusGeometry.circular(
-                                  20.r,
-                                ),
-                                child: Image.asset(
-                                  //"assets/image.png",
-                                  imagePath,
-                                  width: 330.w,
-                                  height: 240.h,
-                                  fit: BoxFit.cover,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder:
+                                          (context) =>
+                                              ParticularRealestatePage(),
+                                    ),
+                                  );
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadiusGeometry.circular(
+                                    20.r,
+                                  ),
+                                  child: Image.asset(
+                                    //"assets/image.png",
+                                    imagePath,
+                                    width: 330.w,
+                                    height: 240.h,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                               Positioned(
