@@ -1,46 +1,91 @@
+import 'dart:io'; // Add this for HttpOverrides
+
+import 'package:ai_powered_app/screen/jobs.screen/home.screen.dart';
+import 'package:ai_powered_app/screen/matrimony.screen/home.page.dart';
+import 'package:ai_powered_app/screen/providerScreen/loginProvider.dart';
+import 'package:ai_powered_app/screen/providerScreen/profileProvider.dart';
+import 'package:ai_powered_app/screen/providerScreen/resisterProvider.dart';
+import 'package:ai_powered_app/screen/providerScreen/searchProvider.dart';
 import 'package:ai_powered_app/screen/splash.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+// 🔐 Custom HttpOverrides to bypass SSL verification (for development only)
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
 
 void main() {
-  runApp(const MyApp());
+  HttpOverrides.global = MyHttpOverrides(); // ⚠️ Only for dev/test
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => RegisterProvider()),
+        ChangeNotifierProvider(create: (_) => LoginProvider()),
+        ChangeNotifierProvider(create: (_) => ProfileProvider()), // ✅ Add this
+          ChangeNotifierProvider(create: (_) => SearchProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: ScreenUtilInit(
-        designSize: Size(440, 956),
+        designSize: const Size(440, 956),
         builder: (context, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: ThemeData(
-              // This is the theme of your application.
-              //
-              // TRY THIS: Try running your application with "flutter run". You'll see
-              // the application has a purple toolbar. Then, without quitting the app,
-              // try changing the seedColor in the colorScheme below to Colors.green
-              // and then invoke "hot reload" (save your changes or press the "hot
-              // reload" button in a Flutter-supported IDE, or press "r" if you used
-              // the command line to start the app).
-              //
-              // Notice that the counter didn't reset back to zero; the application
-              // state is not lost during the reload. To reset the state, use hot
-              // restart instead.
-              //
-              // This works for code too, not just values: Most code changes can be
-              // tested with just a hot reload.
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             ),
-            home: SplashPage(),
+            home: const AuthCheck(),
           );
         },
       ),
+    );
+  }
+}
+
+class AuthCheck extends StatelessWidget {
+  const AuthCheck({super.key});
+
+  Future<bool> _isLoggedIn() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token');
+    print(token);
+    return token != null && token.isNotEmpty;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<bool>(
+      future: _isLoggedIn(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          // Show splash or loading screen while checking
+          return const SplashPage();
+        } else {
+          if (snapshot.data == true) {
+            return const HomePage(); // Replace with your actual HomeScreen
+          } else {
+            return const SplashPage(); // Stay or go to login/register
+          }
+        }
+      },
     );
   }
 }

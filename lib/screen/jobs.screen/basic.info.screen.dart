@@ -17,10 +17,8 @@ class _BasicInfoScreenState extends State<BasicInfoScreen> {
   final emailCotnroller = TextEditingController();
   final exprieneController = TextEditingController();
   final locationController = TextEditingController();
-
   String? gender;
   final List<String> genderList = ["Male", "Female", "Other"];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
