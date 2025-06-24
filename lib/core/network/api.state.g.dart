@@ -29,7 +29,7 @@ class _APIStateNetwork implements APIStateNetwork {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'jobs/listings?keyword=Future Systems&location=Sallieshire&job_type=Contract&experience_min&experience_max&industry&page=1&limit=10',
+            '/api/jobs/listings?keyword=Future Systems&location=Sallieshire&job_type=Contract&experience_min&experience_max&industry&page=1&limit=10',
             queryParameters: queryParameters,
             data: _data,
           )

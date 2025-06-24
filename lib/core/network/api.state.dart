@@ -10,7 +10,7 @@ abstract class APIStateNetwork {
   factory APIStateNetwork(Dio dio, {String baseUrl}) = _APIStateNetwork;
 
   @GET(
-    "jobs/listings?keyword=Future Systems&location=Sallieshire&job_type=Contract&experience_min&experience_max&industry&page=1&limit=10",
+    "/api/jobs/listings?keyword=Future Systems&location=Sallieshire&job_type=Contract&experience_min&experience_max&industry&page=1&limit=10",
   )
   Future<FetchJobListingModel> fetchJob();
 }
