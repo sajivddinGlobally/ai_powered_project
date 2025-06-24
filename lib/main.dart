@@ -1,10 +1,11 @@
 import 'dart:io'; // Add this for HttpOverrides
 
-import 'package:ai_powered_app/screen/jobs.screen/home.screen.dart';
+
 import 'package:ai_powered_app/screen/matrimony.screen/home.page.dart';
 
 import 'package:ai_powered_app/screen/splash.page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,7 +21,7 @@ class MyHttpOverrides extends HttpOverrides {
 }
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

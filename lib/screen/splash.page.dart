@@ -165,10 +165,6 @@ class _SplashPageState extends State<SplashPage> {
                   SizedBox(height: 24.h),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   CupertinoPageRoute(builder: (context) =>LoginPage())
-                      // );
                       Navigator.push(
                         context,
                         CupertinoPageRoute(builder: (context) => StartPage()),

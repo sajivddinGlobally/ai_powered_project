@@ -1,6 +1,4 @@
 import 'package:ai_powered_app/screen/matrimony.screen/home.page.dart';
-
-
 import 'package:ai_powered_app/screen/resister.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
