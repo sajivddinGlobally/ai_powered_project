@@ -1,11 +1,10 @@
-
 import 'package:ai_powered_app/screen/login.page.dart';
+import 'package:ai_powered_app/screen/matrimony.screen/start.page.dart';
 import 'package:ai_powered_app/screen/resister.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -26,7 +25,6 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Stack(
         children: [
           Image.asset(
@@ -167,9 +165,13 @@ class _SplashPageState extends State<SplashPage> {
                   SizedBox(height: 24.h),
                   GestureDetector(
                     onTap: () {
+                      // Navigator.push(
+                      //   context,
+                      //   CupertinoPageRoute(builder: (context) =>LoginPage())
+                      // );
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(builder: (context) =>LoginPage())
+                        CupertinoPageRoute(builder: (context) => StartPage()),
                       );
                     },
                     child: Container(
@@ -198,8 +200,6 @@ class _SplashPageState extends State<SplashPage> {
           ),
         ],
       ),
-
-      
     );
   }
 }

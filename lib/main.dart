@@ -2,10 +2,7 @@ import 'dart:io'; // Add this for HttpOverrides
 
 import 'package:ai_powered_app/screen/jobs.screen/home.screen.dart';
 import 'package:ai_powered_app/screen/matrimony.screen/home.page.dart';
-import 'package:ai_powered_app/screen/providerScreen/loginProvider.dart';
-import 'package:ai_powered_app/screen/providerScreen/profileProvider.dart';
-import 'package:ai_powered_app/screen/providerScreen/resisterProvider.dart';
-import 'package:ai_powered_app/screen/providerScreen/searchProvider.dart';
+
 import 'package:ai_powered_app/screen/splash.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,19 +20,7 @@ class MyHttpOverrides extends HttpOverrides {
 }
 
 void main() {
-  HttpOverrides.global = MyHttpOverrides(); // ⚠️ Only for dev/test
-
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => RegisterProvider()),
-        ChangeNotifierProvider(create: (_) => LoginProvider()),
-        ChangeNotifierProvider(create: (_) => ProfileProvider()), // ✅ Add this
-          ChangeNotifierProvider(create: (_) => SearchProvider()),
-      ],
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -52,7 +37,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             ),
-            home: const AuthCheck(),
+            home: const SplashPage(),
           );
         },
       ),

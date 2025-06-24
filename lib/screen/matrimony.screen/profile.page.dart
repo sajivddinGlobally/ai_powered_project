@@ -21,7 +21,6 @@
 //   final List<String> castlist = ["General", "OBC", "SC", "ST"];
 //   final List<String> martiallist = ["Yes", "No"];
 
-
 // @override
 // void initState() {
 //   super.initState();
@@ -42,11 +41,6 @@
 //     debugPrint("Token or user_id not found in SharedPreferences");
 //   }
 // }
-
-
-
-
-
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -262,10 +256,8 @@
 //   }
 // }
 
-
-
 import 'package:ai_powered_app/screen/matrimony.screen/upload.photo.page.dart';
-import 'package:ai_powered_app/screen/providerScreen/profileProvider.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -292,167 +284,116 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController dobController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    _loadProfile();
-  }
-
-  Future<void> _loadProfile() async {
-    final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('token');
-    final userId = prefs.getInt('user_id');
-
-    if (token != null && userId != null) {
-      await Provider.of<ProfileProvider>(context, listen: false).getProfile(
-        userId: userId,
-        token: token,
-      );
-
-      final profileData = Provider.of<ProfileProvider>(context, listen: false).profileData;
-
-      if (profileData != null) {
-  nameController.text = profileData['name'] ?? '';
-  dobController.text = profileData['age']?.toString() ?? '';
-
-  // Normalize values to match dropdown list
-  gender = _capitalize(profileData['gender']);        // e.g. "male" -> "Male"
-  religion = _capitalize(profileData['religion']);
-  cast = _capitalize(profileData['caste']);
-  marital = _capitalize(profileData['marital_status']);
-}
-
-    }
-  }
-
-  String? _capitalize(String? input) {
-  if (input == null || input.isEmpty) return null;
-  return input[0].toUpperCase() + input.substring(1).toLowerCase();
-}
-
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFDF6F8),
       appBar: AppBar(backgroundColor: Color(0xFFFDF6F8)),
-      body: Consumer<ProfileProvider>(
-        builder: (context, provider, child) {
-          if (provider.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          if (provider.errorMessage != null) {
-            return Center(child: Text(provider.errorMessage!));
-          }
-
-          return SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 15.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Basic Details",
-                  style: GoogleFonts.gothicA1(
-                    fontSize: 30.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF030016),
-                    letterSpacing: -1,
-                  ),
-                ),
-                Text(
-                  "Let's Start with the Basics",
-                  style: GoogleFonts.gothicA1(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xFF9A97AE),
-                  ),
-                ),
-                SizedBox(height: 26.h),
-                TextField(
-                  controller: nameController,
-                  decoration: _inputDecoration("Enter your full name"),
-                ),
-                SizedBox(height: 15.h),
-                buildDropDown(
-                  hint: "Select Gender",
-                  items: genderlist,
-                  value: gender,
-                  onChange: (value) {
-                    setState(() {
-                      gender = value;
-                    });
-                  },
-                ),
-                SizedBox(height: 15.h),
-                TextField(
-                  controller: dobController,
-                  decoration: _inputDecoration("Enter your Date of Birth"),
-                ),
-                SizedBox(height: 15.h),
-                buildDropDown(
-                  hint: "Select Religion",
-                  items: religionList,
-                  value: religion,
-                  onChange: (value) {
-                    setState(() {
-                      religion = value;
-                    });
-                  },
-                ),
-                SizedBox(height: 15.h),
-                buildDropDown(
-                  hint: "Select Cast",
-                  items: castlist,
-                  value: cast,
-                  onChange: (value) {
-                    setState(() {
-                      cast = value;
-                    });
-                  },
-                ),
-                SizedBox(height: 15.h),
-                buildDropDown(
-                  hint: "Select Marital Status",
-                  items: martiallist,
-                  value: marital,
-                  onChange: (value) {
-                    setState(() {
-                      marital = value;
-                    });
-                  },
-                ),
-                SizedBox(height: 25.h),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(builder: (context) => UploadPhotoPage()),
-                    );
-                  },
-                  child: Container(
-                    width: 392.w,
-                    height: 53.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.r),
-                      color: Color(0xFFFE9F0F),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Continue",
-                        style: GoogleFonts.gothicA1(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10.h),
-              ],
+      body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 15.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Basic Details",
+              style: GoogleFonts.gothicA1(
+                fontSize: 30.sp,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF030016),
+                letterSpacing: -1,
+              ),
             ),
-          );
-        },
+            Text(
+              "Let's Start with the Basics",
+              style: GoogleFonts.gothicA1(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFF9A97AE),
+              ),
+            ),
+            SizedBox(height: 26.h),
+            TextField(
+              controller: nameController,
+              decoration: _inputDecoration("Enter your full name"),
+            ),
+            SizedBox(height: 15.h),
+            buildDropDown(
+              hint: "Select Gender",
+              items: genderlist,
+              value: gender,
+              onChange: (value) {
+                setState(() {
+                  gender = value;
+                });
+              },
+            ),
+            SizedBox(height: 15.h),
+            TextField(
+              controller: dobController,
+              decoration: _inputDecoration("Enter your Date of Birth"),
+            ),
+            SizedBox(height: 15.h),
+            buildDropDown(
+              hint: "Select Religion",
+              items: religionList,
+              value: religion,
+              onChange: (value) {
+                setState(() {
+                  religion = value;
+                });
+              },
+            ),
+            SizedBox(height: 15.h),
+            buildDropDown(
+              hint: "Select Cast",
+              items: castlist,
+              value: cast,
+              onChange: (value) {
+                setState(() {
+                  cast = value;
+                });
+              },
+            ),
+            SizedBox(height: 15.h),
+            buildDropDown(
+              hint: "Select Marital Status",
+              items: martiallist,
+              value: marital,
+              onChange: (value) {
+                setState(() {
+                  marital = value;
+                });
+              },
+            ),
+            SizedBox(height: 25.h),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(builder: (context) => UploadPhotoPage()),
+                );
+              },
+              child: Container(
+                width: 392.w,
+                height: 53.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.r),
+                  color: Color(0xFFFE9F0F),
+                ),
+                child: Center(
+                  child: Text(
+                    "Continue",
+                    style: GoogleFonts.gothicA1(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 10.h),
+          ],
+        ),
       ),
     );
   }
@@ -535,9 +476,6 @@ class _ProfilePageState extends State<ProfilePage> {
 //   }
 // }
 
-
-
-
 class buildDropDown extends StatelessWidget {
   final String hint;
   final List<String> items;
@@ -575,20 +513,21 @@ class buildDropDown extends StatelessWidget {
           letterSpacing: -0.2,
         ),
       ),
-      items: items.map((item) {
-        return DropdownMenuItem(
-          value: item,
-          child: Text(
-            item,
-            style: GoogleFonts.gothicA1(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w400,
-              color: Color(0xFF030016),
-              letterSpacing: -0.2,
-            ),
-          ),
-        );
-      }).toList(),
+      items:
+          items.map((item) {
+            return DropdownMenuItem(
+              value: item,
+              child: Text(
+                item,
+                style: GoogleFonts.gothicA1(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF030016),
+                  letterSpacing: -0.2,
+                ),
+              ),
+            );
+          }).toList(),
       onChanged: onChange,
     );
   }
